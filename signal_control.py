@@ -31,7 +31,7 @@ freq_start = test_tones[0]
 freq_step = test_tones[1] - test_tones[0]
 
 resources = pyvisa.ResourceManager('')
-resources.list_resources()
+print(resources.list_resources())
 
 synthesizer = resources.open_resource('GPIB::19::INSTR')
 print(synthesizer.query('*IDN?'))
