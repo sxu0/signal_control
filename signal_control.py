@@ -40,6 +40,7 @@ print(synthesizer.query('*IDN?'))
 synthesizer.write('POW:LEV -5 DBM')
 synthesizer.write('FREQ:CW %f GHZ; STEP %f GHZ' %(freq_start, freq_step))
 for i in range(len(test_tones)-1):
+    print(i)
     time.sleep(3)
     # take one HiSRAMS sample (controlled by HiSRAMS computer)
     synthesizer.write('FREQ:CW UP')
