@@ -27,9 +27,6 @@ elif band == 183:
 df = pd.read_csv('test_tones.csv', header=None, skiprows=3)
 test_tones = df.iloc[:,lookup] / 1000  # convert MHz to GHz
 
-freq_start = test_tones[0]
-freq_step = test_tones[1] - test_tones[0]
-
 resources = pyvisa.ResourceManager('')
 print(resources.list_resources())
 
@@ -38,10 +35,9 @@ print(synthesizer.query('*IDN?'))
 
 # frequency sweep implementation
 synthesizer.write('POW:LEV -5 DBM')
-synthesizer.write('FREQ:CW %f GHZ; STEP %f GHZ' %(freq_start, freq_step))
-for i in range(len(test_tones)-1):
+for i in range(len(test_tones)):
     print(i)
+    synthesizer.write('FREQ:CW %f GHZ' %(test_tones[i]))
     time.sleep(3)
     # take one HiSRAMS sample (controlled by HiSRAMS computer)
-    synthesizer.write('FREQ:CW UP')
 synthesizer.close()
