@@ -36,6 +36,7 @@ print(synthesizer.query('*IDN?'))
 # frequency sweep implementation
 synthesizer.write('POW:LEV -5 DBM')
 synthesizer.write('OUTP:STAT ON')  # power on
+pass  # set breakpoint here for loop to sync with HiSRAMS bash script
 for i in range(len(test_tones)):
     print(i)
     synthesizer.write('FREQ:CW %f GHZ' %(test_tones[i]))
