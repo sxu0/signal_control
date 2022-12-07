@@ -34,12 +34,12 @@ synthesizer = resources.open_resource('GPIB::19::INSTR')
 print(synthesizer.query('*IDN?'))
 
 # frequency sweep implementation
-synthesizer.write('POW:LEV -5 DBM')
+synthesizer.write('POW:LEV -5 DBM')  # set power level
 synthesizer.write('OUTP:STAT ON')  # power on
 pass  # set breakpoint here for loop to sync with HiSRAMS bash script
 for i in range(len(test_tones)):
     print(i)
-    synthesizer.write('FREQ:CW %f GHZ' %(test_tones[i]))
+    synthesizer.write('FREQ:CW %f GHZ' %(test_tones[i]))  # set freq
     time.sleep(3)
     # take one HiSRAMS sample (controlled by HiSRAMS computer)
 synthesizer.write('OUTP:STAT OFF')  # power off
