@@ -6,6 +6,7 @@ import pyvisa
 band = 54
 pol = 's'
 fft = 0
+int_time = 0.5
 
 if band == 54:
     if pol == 's':
@@ -40,11 +41,11 @@ synthesizer.write('OUTP:STAT ON')  # power on
 pass  # set breakpoint here for loop to sync with HiSRAMS bash script
 for j in range(len(power_levels)):
     synthesizer.write('POW:LEV %f DBM' %(power_levels[j]))  # set power level
-    time.sleep(3)
+    time.sleep(2 + int_time)
     for i in range(len(test_tones)):
         print(i)
         synthesizer.write('FREQ:CW %f GHZ' %(test_tones[i]))  # set freq
-        time.sleep(3)
+        time.sleep(2 + int_time)
         # take one HiSRAMS sample (controlled by HiSRAMS computer)
 synthesizer.write('OUTP:STAT OFF')  # power off
 synthesizer.close()
