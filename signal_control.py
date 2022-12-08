@@ -38,7 +38,7 @@ print(synthesizer.query('*IDN?'))
 
 # frequency sweep implementation
 synthesizer.write('OUTP:STAT ON')  # power on
-pass  # set breakpoint here for loop to sync with HiSRAMS bash script
+# set breakpoint at next line to manually sync each outer loop with bash script on HiSRAMS computer
 for j in range(len(power_levels)):
     synthesizer.write('POW:LEV %f DBM' %(power_levels[j]))  # set power level
     time.sleep(2 + int_time)
