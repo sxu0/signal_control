@@ -28,7 +28,8 @@ elif band == 183:
 df = pd.read_csv('test_tones.csv', header=None, skiprows=3)
 test_tones = df.iloc[:,lookup] / 1000  # convert MHz to GHz
 
-power_levels = [0, 5, 10, 15, 20, 25, 30]  # with 80 dBm of attenuators
+power_levels = [0, 5, 10, 15]  # with 80 dBm of attenuators
+# power_levels = [0, 5, 10]  # with 60 dBm of attenuators
 
 resources = pyvisa.ResourceManager('')
 print(resources.list_resources())
